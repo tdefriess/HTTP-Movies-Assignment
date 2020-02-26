@@ -10,7 +10,7 @@ function UpdateMovie(props){
         director: '',
         metascore: '',
         stars: []
-    })    
+    })
 
     useEffect(() => {
         const movieToUpdate = props.movies.find(movie => `${movie.id}` === id);
@@ -34,9 +34,10 @@ function UpdateMovie(props){
     const handleSubmit = e => {
         e.preventDefault();
         axios
-            .put(`http://localhost:3000/api/movies/${id}`, movie)
+            .put(`http://localhost:5000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res);
+                props.setUpdate(props.update + 1)
             })
             .catch(err => console.log(err));
     }
